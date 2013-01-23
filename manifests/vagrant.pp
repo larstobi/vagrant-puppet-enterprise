@@ -9,3 +9,9 @@ package {
   'virtualbox-guest-additions']:
     ensure => latest;
 }
+
+# Ensure that native packages for Puppet community edition are purged.
+package {
+  ['puppet', 'puppet-common', 'facter']:
+    ensure => purged,
+}
