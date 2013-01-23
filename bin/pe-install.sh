@@ -1,7 +1,6 @@
 #!/bin/bash
 pe_src=$1
 pe_url=$2
-echo $pe_src $pe_url
 
 # Run PE-installer unless already installed
 if [ ! -f /opt/puppet/bin/puppet ]; then
