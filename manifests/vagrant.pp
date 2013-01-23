@@ -15,3 +15,8 @@ package {
   ['puppet', 'puppet-common', 'facter']:
     ensure => purged,
 }
+
+$packages = hiera_array('packages')
+package { $packages:
+  ensure => installed,
+}
