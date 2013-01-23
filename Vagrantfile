@@ -34,7 +34,7 @@ Vagrant::Config.run do |config|
 
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "site.pp"
+    puppet.manifest_file  = "vagrant.pp"
     puppet.module_path = "modules"
     puppet.options = "--show_diff --verbose --debug --environment=vagrant"
   end
