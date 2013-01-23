@@ -15,4 +15,5 @@ if [ ! -f /opt/puppet/bin/puppet ]; then
   fi
 
   /tmp/${pe_src}/puppet-enterprise-installer -A /vagrant/answers.txt
+  rm -rf /tmp/${pe_src}/puppet-enterprise-installer
 fi
