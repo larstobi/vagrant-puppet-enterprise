@@ -27,12 +27,9 @@ Vagrant::Config.run do |config|
 
   pe_version = '2.7.0'
   pe_src = "puppet-enterprise-#{pe_version}-ubuntu-12.04-amd64"
-  pe_unpack = "if [ ! -d /tmp/#{pe_src} ]; then " +
-              "tar zxf /vagrant/#{pe_src}.tar.gz -C /tmp/ ; fi"
-  config.vm.provision :shell, :inline => pe_unpack
+  pe_url = "https://s3-eu-west-1.amazonaws.com/puppet.xdct.net/#{pe_src}.tar.gz"
 
-  pe_install_cmd = "/tmp/#{pe_src}/puppet-enterprise-installer -A /vagrant/answers.txt"
-  pe_install = "if [ ! -d /opt/puppet ]; then #{pe_install_cmd} ; fi"
+  pe_install = "/vagrant/bin/pe-install.sh #{pe_src} #{pe_url}"
   config.vm.provision :shell, :inline => pe_install
 
   config.vm.provision :puppet do |puppet|
