@@ -32,6 +32,11 @@ Vagrant::Config.run do |config|
   pe_install = "/vagrant/bin/pe-install.sh #{pe_src} #{pe_url}"
   config.vm.provision :shell, :inline => pe_install
 
+  vagrant_hiera="/vagrant/hiera.yaml"
+  hiera_file="/etc/puppetlabs/puppet/hiera.yaml"
+  hiera_config = "/vagrant/bin/file-copy.sh #{vagrant_hiera} #{hiera_file}"
+  config.vm.provision :shell, :inline => hiera_config
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "manifests"
     puppet.manifest_file  = "vagrant.pp"
